@@ -3,10 +3,10 @@
     <div>
       <v-toolbar dark color="green">
         <v-toolbar-title>
-          <nuxt-link to="/">눈누난나</nuxt-link>
+          <NuxtLink to="/">눈누난나</NuxtLink>
         </v-toolbar-title>
       
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-toolbar-items>
           <v-text-field label="검색" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
           <v-btn text nuxt to="/profile" :style="{ display: 'flex', alignItems: 'center' }">
@@ -23,7 +23,7 @@
         <LoginForm />
       </v-col>
       <v-col cols="12" md="8">
-        <Nuxt/>
+        <Nuxt />
       </v-col>
     </v-row>
   </v-app>

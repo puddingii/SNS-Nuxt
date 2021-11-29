@@ -33,6 +33,9 @@
 import FollowList from "~/components/FollowList"
 
 export default {
+  components: {
+    FollowList
+  },
   data() {
     return {
       name: "Profile page"
@@ -43,9 +46,6 @@ export default {
       title: "프로필"
     }
   },
-  components: {
-    FollowList
-  }
 }
 </script>
 
