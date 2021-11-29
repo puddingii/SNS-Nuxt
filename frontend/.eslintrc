@@ -1,5 +1,6 @@
 {
   "parserOptions": {
+    "parser": "@babel/eslint-parser",
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
@@ -8,7 +9,8 @@
     "node": true
   },
   "extends": [
-    "plugin:vue/recommended"
+    "@nuxtjs",
+    "plugin:nuxt/recommended"
   ],
   "plugins": [],
   "rules": { 

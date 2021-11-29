@@ -29,7 +29,7 @@
 export default {
   data() {
     return {
-      vaild: false,
+      valid: false,
       email: '',
       password: '',
       emailRules: [
