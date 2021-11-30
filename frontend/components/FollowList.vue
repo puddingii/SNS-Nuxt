@@ -9,11 +9,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      list: [{ nickname: 'HI1' }, { nickname: 'HI2' }, { nickname: 'HI3' }]
-    }
-  }
 }
 </script>
 
