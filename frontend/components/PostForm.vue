@@ -38,10 +38,12 @@ export default {
     ...mapState('users', ['me'])
   },
   methods: {
-    handleTextareaChange () {
-      this.hideDetails = true
-      this.success = false
-      this.successMessages = ''
+    handleTextareaChange (value) {
+      if (value.length) {
+        this.hideDetails = true
+        this.success = false
+        this.successMessages = ''
+      }
     },
     async handleFormSubmit () {
       try {
