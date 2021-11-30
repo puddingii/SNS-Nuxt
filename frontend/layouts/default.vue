@@ -5,7 +5,7 @@
         <v-toolbar-title>
           <NuxtLink to="/">눈누난나</NuxtLink>
         </v-toolbar-title>
-      
+
         <v-spacer />
         <v-toolbar-items>
           <v-text-field label="검색" hide-details prepend-icon="mdi-magnify" :style="{ display: 'flex', alignItems: 'center' }" />
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import LoginForm from '~/components/LoginForm';
+import LoginForm from '~/components/LoginForm'
 
 export default {
   components: {

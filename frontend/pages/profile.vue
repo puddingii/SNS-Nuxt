@@ -30,22 +30,22 @@
 </template>
 
 <script>
-import FollowList from "~/components/FollowList"
+import FollowList from '~/components/FollowList'
 
 export default {
   components: {
     FollowList
   },
-  data() {
+  data () {
     return {
-      name: "Profile page"
+      name: 'Profile page'
     }
   },
-  head() {
+  head () {
     return {
-      title: "프로필"
+      title: '프로필'
     }
-  },
+  }
 }
 </script>
 

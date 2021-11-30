@@ -26,9 +26,9 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      nickname: "GeonYeong"
+      nickname: 'GeonYeong'
     }
   }
 }

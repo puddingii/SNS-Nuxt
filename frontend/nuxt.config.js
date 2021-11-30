@@ -1,6 +1,6 @@
 module.exports = {
   head: {
-    title: "Hello World!"
+    title: 'Hello World!'
   },
   buildModules: [
     '@nuxtjs/vuetify'
@@ -11,5 +11,5 @@ module.exports = {
   plugins: [],
   vuetify: {
 
-  },
+  }
 }

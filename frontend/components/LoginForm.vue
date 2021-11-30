@@ -1,16 +1,16 @@
 <template>
-  <v-container>
+  <v-container v-if="!me">
     <v-card>
       <v-form ref="form" v-model="valid" @submit.prevent="handleFormSubmit">
         <v-container>
-          <v-text-field 
+          <v-text-field
             v-model="email"
             label="이메일"
             type="email"
             :rules="emailRules"
             required
           />
-          <v-text-field 
+          <v-text-field
             v-model="password"
             label="비밀번호"
             type="password"
@@ -23,11 +23,17 @@
       </v-form>
     </v-card>
   </v-container>
+  <v-container v-else>
+    <v-card>
+      {{ me.nickname }}로그인되었습니다
+      <v-btn @click="handleLogoutClick">로그아웃</v-btn>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       valid: false,
       email: '',
@@ -41,10 +47,27 @@ export default {
       ]
     }
   },
+  computed: {
+    me () {
+      return this.$store.state.users.me
+    }
+  },
   methods: {
-    handleFormSubmit() {
-      this.$refs.form.validate();
-      console.log("lkkj");
+    async handleFormSubmit () {
+      try {
+        if (this.$refs.form.validate()) {
+          await this.$store.dispatch('users/logIn', {
+            email: this.email,
+            nickname: 'hi'
+          })
+          this.$router.push('/')
+        }
+      } catch (e) {
+        alert('회원가입 실패')
+      }
+    },
+    handleLogoutClick () {
+      this.$store.dispatch('users/logOut')
     }
   }
 }
