@@ -5,7 +5,7 @@
       <v-card-text>
         <div>
           <h3>{{ post.User.nickname }}</h3>
-          <div>{{ post.content }}</div>
+          <NuxtLink :to="`/post/${ post.id }`">{{ post.content }}</NuxtLink>
         </div>
       </v-card-text>
       <v-card-actions>

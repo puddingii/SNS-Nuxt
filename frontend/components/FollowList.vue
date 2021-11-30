@@ -1,8 +1,8 @@
 <template>
   <v-list>
-    <v-list-item v-for="(nickname, cnt) in list" :key="cnt">
-      <span>{{ nickname }}</span>
-      <v-icon>mdi-minus-circle-outline</v-icon>
+    <v-list-item v-for="(item, cnt) in list" :key="cnt">
+      <span>{{ item.nickname }}</span>
+      <v-icon @click="remove(item.id)">mdi-minus-circle-outline</v-icon>
     </v-list-item>
   </v-list>
 </template>
@@ -12,6 +12,10 @@ export default {
   props: {
     list: {
       type: Array,
+      required: true
+    },
+    remove: {
+      type: Function,
       required: true
     }
   }

@@ -49,6 +49,7 @@
 
 <script>
 export default {
+  middleware: 'anonymous',
   data () {
     return {
       valid: false,
@@ -79,6 +80,18 @@ export default {
   head () {
     return {
       title: '회원가입'
+    }
+  },
+  computed: {
+    me () {
+      return this.$store.state.users.me
+    }
+  },
+  watch: {
+    me (newValue) {
+      if (newValue) {
+        this.$router.push('/')
+      }
     }
   },
   methods: {

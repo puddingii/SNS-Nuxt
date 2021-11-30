@@ -18,13 +18,13 @@
       <v-card style="margin-bottom: 20px">
         <v-container>
           <v-subheader>팔로잉</v-subheader>
-          <FollowList :list="followingList" />
+          <FollowList :list="followingList" :remove="removeFollowing" />
         </v-container>
       </v-card>
       <v-card style="margin-bottom: 20px">
         <v-container>
           <v-subheader>팔로워</v-subheader>
-          <FollowList :list="followerList" />
+          <FollowList :list="followerList" :remove="removeFollower" />
         </v-container>
       </v-card>
     </v-container>
@@ -38,6 +38,7 @@ export default {
   components: {
     FollowList
   },
+  middleware: 'authenticated',
   data () {
     return {
       valid: false,
@@ -65,6 +66,12 @@ export default {
       this.$store.dispatch('users/changeNickname', {
         nickname: this.nickname
       })
+    },
+    removeFollowing (id) {
+      this.$store.dispatch('users/removeFollowing', { id })
+    },
+    removeFollower (id) {
+      this.$store.dispatch('users/removeFollower', { id })
     }
   }
 }
