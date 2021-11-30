@@ -36,13 +36,13 @@ export const mutations = {
 }
 
 export const actions = {
-  signUp ({ commit, dispatch }, payload) {
+  signUp ({ commit }, payload) {
     commit('setMe', payload)
   },
-  logIn ({ commit, dispatch }, payload) {
+  logIn ({ commit }, payload) {
     commit('setMe', payload)
   },
-  logOut ({ commit, dispatch }, payload) {
+  logOut ({ commit }) {
     commit('setMe', null)
   },
   changeNickname ({ commit }, payload) {

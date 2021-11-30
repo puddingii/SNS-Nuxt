@@ -23,6 +23,9 @@ export default {
     mainPosts () {
       return this.$store.state.posts.mainPosts
     }
+  },
+  mounted () {
+    this.$store.dispatch('posts/loadPosts')
   }
 }
 </script>
