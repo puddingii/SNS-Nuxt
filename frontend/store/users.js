@@ -36,19 +36,34 @@ export const mutations = {
 }
 
 export const actions = {
-  signUp ({ commit }, payload) {
-    this.$axios.post('http://localhost:3088/user', {
+  async signUp ({ commit }, payload) {
+    const response = await this.$axios.post('http://localhost:3088/user', {
       email: payload.email,
       nickname: payload.nickname,
       password: payload.password
+    }, {
+      withCredentials: true // port번호가 다르기 때문에 서버에서 오는 cookie가 오지 않을 수도 있어서 설정함.
     })
-    commit('setMe', payload)
+    commit('setMe', response.data)
   },
-  logIn ({ commit }, payload) {
-    commit('setMe', payload)
+  async logIn ({ commit }, payload) {
+    const response = await this.$axios.post('http://localhost:3088/user/login', {
+      email: payload.email,
+      password: payload.password
+    }, {
+      withCredentials: true // port번호가 다르기 때문에 서버에서 오는 cookie가 오지 않을 수도 있어서 설정함.
+    })
+    commit('setMe', response.data)
   },
-  logOut ({ commit }) {
-    commit('setMe', null)
+  async logOut ({ commit }) {
+    try {
+      await this.$axios.post('http://localhost:3088/user/logout', {}, {
+        withCredentials: true // port번호가 다르기 때문에 서버에서 오는 cookie가 오지 않을 수도 있어서 설정함.
+      })
+      commit('setMe', null)
+    } catch (e) {
+      console.error(e)
+    }
   },
   changeNickname ({ commit }, payload) {
     commit('changeNickname', payload)

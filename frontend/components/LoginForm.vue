@@ -60,7 +60,7 @@ export default {
         if (this.$refs.form.validate()) {
           await this.$store.dispatch('users/logIn', {
             email: this.email,
-            nickname: 'hi'
+            password: this.password
           })
           this.$router.push('/')
         }
