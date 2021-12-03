@@ -1,11 +1,14 @@
 const express = require('express');
+const { isLoggedIn } = require('./middlewares');
 
 const postController = express.Router();
 
-postController.post('/', (req, res, next) => {
-  if(req.isAuthenticated()) {
-    
-  }
+postController.post('/', isLoggedIn, (req, res, next) => {
+
+});
+
+postController.post('/images', isLoggedIn, (req, res) => {
+
 });
 
 module.exports = postController;

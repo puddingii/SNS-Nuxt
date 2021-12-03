@@ -37,7 +37,7 @@ export const mutations = {
 
 export const actions = {
   async signUp ({ commit }, payload) {
-    const response = await this.$axios.post('http://localhost:3088/user', {
+    const response = await this.$axios.post('http://localhost:3088/user/signUp', {
       email: payload.email,
       nickname: payload.nickname,
       password: payload.password

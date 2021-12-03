@@ -2,10 +2,11 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const db = require('../../models');
+const { isNotLoggedIn, isLoggedIn } = require('./middlewares');
 
 const userController = express.Router();
 
-userController.post('/', async(req, res, next) => {
+userController.post('/signUp', isNotLoggedIn, async(req, res, next) => {
   try{
     const { 
       body: { email, nickname, password }
@@ -42,7 +43,7 @@ userController.post('/', async(req, res, next) => {
   }
 });
 
-userController.post('/login', (req, res, next) => {
+userController.post('/login', isNotLoggedIn, (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if(err) {
       console.error(err);
@@ -61,7 +62,7 @@ userController.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-userController.post('/logout', (req, res) => {
+userController.post('/logout', isLoggedIn, (req, res) => {
   if(req.isAuthenticated()) {
     req.logout();
     return res.status(200).send('로그아웃 되었습니다.');

@@ -15,7 +15,8 @@
           @input="handleTextareaChange"
         />
         <v-btn type="submit" color="green" absolute right>ㄱㄱ</v-btn>
-        <v-btn>이미지 업로드</v-btn>
+        <input ref="imageInput" type="file" multiple hidden @change="handleImagesChange">
+        <v-btn type="button" @click="handleImageUploadClick">이미지 업로드</v-btn>
       </v-form>
     </v-container>
   </v-card>
@@ -66,6 +67,12 @@ export default {
       } catch (e) {
 
       }
+    },
+    handleImageUploadClick () {
+      this.$refs.imageInput.click()
+    },
+    handleImagesChange (e) {
+      console.log(e.target.files)
     }
   }
 }
