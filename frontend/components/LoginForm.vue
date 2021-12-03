@@ -65,7 +65,8 @@ export default {
           this.$router.push('/')
         }
       } catch (e) {
-        alert('회원가입 실패')
+        console.log(e)
+        alert('로그인 실패')
       }
     },
     handleLogoutClick () {

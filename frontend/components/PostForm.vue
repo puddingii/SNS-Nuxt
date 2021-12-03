@@ -73,6 +73,12 @@ export default {
     },
     handleImagesChange (e) {
       console.log(e.target.files)
+      const imageFormData = new FormData()
+      const temp = []
+      temp.forEach.call(e.target.files, (f) => {
+        imageFormData.append('image', f)
+      })
+      this.$store.dispatch('posts/uploadImages', imageFormData)
     }
   }
 }

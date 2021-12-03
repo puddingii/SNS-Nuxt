@@ -47,5 +47,10 @@ export const actions = {
     if (state.hasMorePost) {
       commit('loadPosts')
     }
+  },
+  async uploadImages ({ commit }, payload) {
+    await this.$axios.post('http://localhost:3088/post/images', payload, {
+      withCredentials: true
+    })
   }
 }

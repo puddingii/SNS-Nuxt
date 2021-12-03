@@ -65,7 +65,13 @@ userController.post('/login', isNotLoggedIn, (req, res, next) => {
 userController.post('/logout', isLoggedIn, (req, res) => {
   if(req.isAuthenticated()) {
     req.logout();
-    return res.status(200).send('로그아웃 되었습니다.');
+    req.session.destroy((e) => {
+      if(e) {
+        console.log(e);
+        return res.sendStatus(401);
+      }
+      return res.status(200).send('로그아웃 되었습니다.');
+    });
   }
 })
 
